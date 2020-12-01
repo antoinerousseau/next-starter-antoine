@@ -1,30 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-starter-antoine
 
-## Getting Started
+My opinionated [Next.js](https://nextjs.org/) SSG starter template.
 
-First, run the development server:
+It starts from [the default Next.js template](https://github.com/vercel/next.js/tree/master/packages/create-next-app/templates/default), and adds:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [TypeScript](https://www.typescriptlang.org/)
+- [Eslint](https://eslint.org/) & [Prettier](https://prettier.io/)
+- [Bugsnag](https://www.bugsnag.com/)
+- [Styled Components](https://styled-components.com/)
+- [Absolute imports](https://nextjs.org/docs/advanced-features/module-path-aliases)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See also [Next.js > examples >with-typescript-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-typescript-styled-components)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+It is made for static-only (SSG), not SSR.
 
-## Learn More
+## Requirements
 
-To learn more about Next.js, take a look at the following resources:
+- [Node](https://nodejs.org/) v10.13+
+- [Yarn](https://yarnpkg.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    npx create-next-app [name] -e https://github.com/antoinerousseau/next-starter-antoine
+    cd [name]
+    cp {example,}.env
 
-## Deploy on Vercel
+And configure your site infos in `package.json`, `pages/_app.tsx` and `public/site.webmanifest`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `yarn dev`: start development mode
+- `yarn lint`: check linting (Eslint + Prettier)
+- `yarn build`: make production bundle

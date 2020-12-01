@@ -1,0 +1,13 @@
+{
+  "name": "Antoine's Next.js starter",
+  "short_name": "next-starter-antoine",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

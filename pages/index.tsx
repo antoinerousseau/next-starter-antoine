@@ -108,7 +108,7 @@ export default function Home() {
         </Title>
 
         <Description>
-          Get started by editing <Code>pages/index.js</Code>
+          Get started by editing <Code>pages/index.tsx</Code>
         </Description>
 
         <Grid>

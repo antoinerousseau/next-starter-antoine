@@ -10,7 +10,7 @@ It starts from [the default Next.js template](https://github.com/vercel/next.js/
 - [Styled Components](https://styled-components.com/)
 - [Absolute imports](https://nextjs.org/docs/advanced-features/module-path-aliases)
 
-See also [Next.js > examples >with-typescript-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-typescript-styled-components)
+See also [Next.js > examples > with-typescript-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-typescript-styled-components)
 
 It is made for static-only (SSG), not SSR.
 

@@ -1,9 +1,11 @@
-import { ErrorInfo } from "react"
+import { ErrorInfo, useEffect } from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import Head from "next/head"
 import { AppProps } from "next/app"
+import { useRouter } from "next/dist/client/router"
 
-import { ErrorBoundary } from "helpers/bugsnag"
+import { GA_TRACKING_ID, trackPageview } from "src/components/Analytics"
+import { ErrorBoundary } from "src/helpers/bugsnag"
 
 const FONT =
   "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"
@@ -59,6 +61,18 @@ const ErrorComponent = ({ error }: FallbackProps) => (
 )
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      trackPageview(url)
+    }
+    router.events.on("routeChangeComplete", handleRouteChange)
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange)
+    }
+  }, [router.events])
+
   const children = (
     <>
       <GlobalStyle />
@@ -67,6 +81,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', '${GA_TRACKING_ID}', {
+                        page: window.location.pathname
+                    });`,
+          }}
+        />
       </Head>
       <Component {...pageProps} />
     </>
